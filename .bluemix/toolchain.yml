@@ -3,10 +3,10 @@ template:
   name: Build your own toolchain
   description: dynamic-template-prototype
   required:
-  - githubconsolidated01
-  - githubconsolidated02
+    - githubconsolidated01
+    - githubconsolidated02
   $configuration:
-    ENABLE_EXTENSIONS: true  
+    ENABLE_EXTENSIONS: true
 toolchain:
   name: "a-dynamic-templated-toolchain-{{timestamp}}"
 services:
@@ -22,18 +22,26 @@ services:
           repository_url: >
             if ($env.services.githubconsolidated01.parameters.type === "link") {
               $env.services.githubconsolidated01.parameters.repo_url;
-            } else if ($env.services.githubconsolidated01.parameters.type === "new") {
-              "new";
-            } else if ($env.services.githubconsolidated01.parameters.type === "fork") {
-              "fork";
-            } else if ($env.services.githubconsolidated01.parameters.type === "clone") {
-              "clone";
-            }          
+            } else {
+              if ($env.services.githubconsolidated01.parameters.type === "new") {
+                "new";
+              } else {
+                if ($env.services.githubconsolidated01.parameters.type === "fork") {
+                  "fork";
+                } else {
+                  if ($env.services.githubconsolidated01.parameters.type === "clone") {
+                    "clone";
+                  } else {
+                    "(default)https://github.com/open-toolchain/hello-containers.git"
+                  }
+                }
+              }
+            }
         content:
           $text: pipeline_pipeline00.yml
       services:
-      - githubconsolidated01
-      - githubconsolidated02
+        - githubconsolidated01
+        - githubconsolidated02
     service_id: pipeline
   githubconsolidated01:
     parameters:
