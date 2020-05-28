@@ -3,7 +3,10 @@ template:
   name: Build your own toolchain
   description: dynamic-template-prototype
   required:
+  - githubconsolidated01
   - githubconsolidated02
+  $configuration:
+    ENABLE_EXTENSIONS: true  
 toolchain:
   name: dynamic-template-prototype
 services:
@@ -17,7 +20,11 @@ services:
         env:
           githubconsolidated02: githubconsolidated02
           repository_url: >
-            $env.services.githubconsolidated01.parameters.repo_url
+            if ($env.services.githubconsolidated01.parameters.type === "link") {
+              $env.services.githubconsolidated01.parameters.repo_url;
+            } else {
+              $env.services.githubconsolidated01.parameters.type;
+            }          
         content:
           $text: pipeline_pipeline00.yml
       services:
