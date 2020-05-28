@@ -8,7 +8,7 @@ template:
   $configuration:
     ENABLE_EXTENSIONS: true  
 toolchain:
-  name: dynamic-template-prototype
+  name: "a-dynamic-templated-toolchain-{{timestamp}}"
 services:
   pipeline00:
     parameters:
