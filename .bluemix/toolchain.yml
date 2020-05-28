@@ -34,6 +34,7 @@ services:
       $env.source_provider ? $env.source_provider : 'githubconsolidated'
   githubconsolidated02:
     parameters:
+      type: link
       repo_url: https://github.com/open-toolchain/tekton-catalog.git
       has_issues: false
       enable_traceability: false
