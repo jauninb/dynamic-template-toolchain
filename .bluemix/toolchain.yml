@@ -22,8 +22,12 @@ services:
           repository_url: >
             if ($env.services.githubconsolidated01.parameters.type === "link") {
               $env.services.githubconsolidated01.parameters.repo_url;
-            } else {
-              $env.services.githubconsolidated01.parameters.type;
+            } else if ($env.services.githubconsolidated01.parameters.type === "new") {
+              "new";
+            } else if ($env.services.githubconsolidated01.parameters.type === "fork") {
+              "fork";
+            } else if ($env.services.githubconsolidated01.parameters.type === "clone") {
+              "clone";
             }          
         content:
           $text: pipeline_pipeline00.yml
