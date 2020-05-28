@@ -1,0 +1,40 @@
+version: 2
+template:
+  name: Build your own toolchain
+  description: dynamic-template-prototype
+  required:
+  - githubconsolidated02
+toolchain:
+  name: dynamic-template-prototype
+services:
+  pipeline00:
+    parameters:
+      label: tekton
+      type: tekton
+      name: tekton
+      ui_pipeline: false
+      configuration:
+        env:
+          githubconsolidated02: githubconsolidated02
+          repository_url: >
+            $env.services.githubconsolidated01.parameters.repo_url
+        content:
+          $text: pipeline_pipeline00.yml
+      services:
+      - githubconsolidated01
+      - githubconsolidated02
+    service_id: pipeline
+  githubconsolidated01:
+    parameters:
+      type: link
+      repo_url: https://github.com/open-toolchain/hello-containers.git
+      has_issues: false
+      enable_traceability: false
+    service_id: >
+      $env.source_provider ? $env.source_provider : 'githubconsolidated'
+  githubconsolidated02:
+    parameters:
+      repo_url: https://github.com/open-toolchain/tekton-catalog.git
+      has_issues: false
+      enable_traceability: false
+    service_id: githubconsolidated

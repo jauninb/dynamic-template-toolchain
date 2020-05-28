@@ -1,0 +1,21 @@
+inputs:
+- branch: tkn_v1beta1
+  path: git
+  type: git
+  service: ${githubconsolidated02}
+- branch: tkn_v1beta1
+  path: git/sample
+  type: git
+  service: ${githubconsolidated02}
+properties:
+- name: apikey
+  type: secure
+  value: ""
+- name: repository
+  type: text
+  value: ${repository_url}
+triggers:
+- eventListener: event-listener-simple-clone
+  name: manual-git-sample
+  properties: []
+  type: manual
