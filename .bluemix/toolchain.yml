@@ -20,7 +20,7 @@ services:
       configuration:
         env:
           githubconsolidated02: githubconsolidated02
-          repository_url: {{services.githubconsolidated01.parameters.repo_url}}
+          repository_url: "{{services.githubconsolidated01.parameters.repo_url}}"
           repository_url_if: >
             if ($env.services.githubconsolidated01.parameters.type === "link") {
               $env.services.githubconsolidated01.parameters.repo_url;
