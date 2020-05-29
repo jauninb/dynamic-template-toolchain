@@ -14,6 +14,9 @@ properties:
 - name: repository
   type: text
   value: ${repository_url}
+- name: repository_if
+  type: text
+  value: ${repository_url_if}
 triggers:
 - eventListener: event-listener-simple-clone
   name: manual-git-sample

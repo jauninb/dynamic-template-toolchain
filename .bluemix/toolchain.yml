@@ -21,6 +21,9 @@ services:
         env:
           githubconsolidated02: githubconsolidated02
           repository_url: >
+            $env.services.githubconsolidated01.parameters.type === "link" ? 
+              $env.services.githubconsolidated01.parameters.repo_url : env.services.githubconsolidated01.parameters.type
+          repository_url_if: >
             if ($env.services.githubconsolidated01.parameters.type === "link") {
               $env.services.githubconsolidated01.parameters.repo_url;
             } else {
