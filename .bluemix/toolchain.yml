@@ -7,6 +7,7 @@ template:
     - githubconsolidated02
   $configuration:
     ENABLE_EXTENSIONS: true
+    ENABLE_IF_ELSE: true
 toolchain:
   name: "a-dynamic-templated-toolchain-{{timestamp}}"
 services:
@@ -24,7 +25,6 @@ services:
               $env.services.githubconsolidated01.parameters.repo_url;
             } else {
               if ($env.services.githubconsolidated01.parameters.type === "new") {
-                "new";
               } else {
                 if ($env.services.githubconsolidated01.parameters.type === "fork") {
                   "fork";
