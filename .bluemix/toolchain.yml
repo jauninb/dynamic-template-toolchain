@@ -6,8 +6,8 @@ template:
     - githubconsolidated01
     - githubconsolidated02
   $configuration:
-    ENABLE_EXTENSIONS: true
-    ENABLE_IF_ELSE: true
+    ENABLE_EXTENSIONS: "true"
+    ENABLE_IF_ELSE: "true"
 toolchain:
   name: "a-dynamic-templated-toolchain-{{timestamp}}"
 services:
