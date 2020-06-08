@@ -36,6 +36,7 @@ services:
             }
           tekton-catalog-repo: tekton-catalog-repo
           repository_url: "{{services.repo.parameters.repo_url}}"
+          repository_url_mustache: "https://github.com/{{services.repo.parameters.owner_id}}/{{services.repo.parameters.repo_name}}"
           repository_url_if: >
             if ( $env.source_provider === 'githubconsolidated' ) {
               "https://github.com/{{services.repo.parameters.owner_id}}/{{services.repo.parameters.repo_name}}";
