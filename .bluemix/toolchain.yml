@@ -58,7 +58,9 @@ services:
     service_id: pipeline
   repo:
     parameters:
-      type: link
+      type: $env.type || 'clone'
+      repo_name: "hello-containers-{{timestamp}}"
+      source_repo_url: 'https://github.com/open-toolchain/hello-containers'
       repo_url: https://github.com/open-toolchain/hello-containers.git
       has_issues: false
       enable_traceability: false
