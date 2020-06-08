@@ -41,6 +41,7 @@ services:
               $env.services.githubconsolidated01.parameters.repo_url;
             } else {
               if ( $env.services.githubconsolidated01.parameters.type === "new" ) {
+                "new";
               } else {
                 if ( $env.services.githubconsolidated01.parameters.type === "fork" ) {
                   "fork";
