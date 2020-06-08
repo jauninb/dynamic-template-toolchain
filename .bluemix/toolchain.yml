@@ -20,8 +20,13 @@ services:
       configuration:
         env:
           GIT_COMMIT_EVENT_LISTENER_NAME: >
-            $env.source_provider === 'githubconsolidated' ? 'github-commit' :
-              $env.source_provider === 'gitlab' ? 'grit-or-gitlab-commit' : 'grit-or-gitlab-commit'
+            if ( $env.source_provider === 'githubconsolidated' ) {
+              'github-commit';
+            } else if ( $env.source_provider === 'gitlab' ? ) {
+              "grit-or-gitlab-commit";
+            } else {
+              'grit-or-gitlab-commit';
+            } 
           githubconsolidated02: githubconsolidated02
           repository_url: "{{services.githubconsolidated01.parameters.repo_url}}"
           repository_url_if: >
