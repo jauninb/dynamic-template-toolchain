@@ -64,6 +64,7 @@ services:
       repo_name: "hello-containers-{{timestamp}}"
       source_repo_url: 'https://github.com/open-toolchain/hello-containers'
       repo_url: https://github.com/open-toolchain/hello-containers.git
+      owner_id: ""
       has_issues: false
       enable_traceability: false
     service_id: >
