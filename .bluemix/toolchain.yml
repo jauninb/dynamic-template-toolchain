@@ -23,21 +23,27 @@ services:
           GIT_COMMIT_EVENT_LISTENER_NAME: >
             if ( $env.source_provider === 'githubconsolidated' ) {
               'github-commit';
-            } else {
+            } else if ( $env.source_provider === 'hostedgit' ) {
               'grit-or-gitlab-commit';
-            } 
+            } else if ( $env.source_provider === 'gitlab' ) {
+              'grit-or-gitlab-commit';
+            } else if ( $env.source_provider === 'bitbucketgit' ) {
+              'bitbucket-commit';
+            } else {
+              'github-commit';
+            }
           githubconsolidated02: githubconsolidated02
           repository_url: "{{services.githubconsolidated01.parameters.repo_url}}"
           repository_url_if: >
-            if ($env.services.githubconsolidated01.parameters.type === "link") {
+            if ( $env.services.githubconsolidated01.parameters.type === "link" ) {
               $env.services.githubconsolidated01.parameters.repo_url;
             } else {
-              if ($env.services.githubconsolidated01.parameters.type === "new") {
+              if ( $env.services.githubconsolidated01.parameters.type === "new" ) {
               } else {
-                if ($env.services.githubconsolidated01.parameters.type === "fork") {
+                if ( $env.services.githubconsolidated01.parameters.type === "fork" ) {
                   "fork";
                 } else {
-                  if ($env.services.githubconsolidated01.parameters.type === "clone") {
+                  if ( $env.services.githubconsolidated01.parameters.type === "clone" ) {
                     "clone";
                   } else {
                     "(default)https://github.com/open-toolchain/hello-containers.git";
