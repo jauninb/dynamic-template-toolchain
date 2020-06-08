@@ -2,11 +2,11 @@ inputs:
 - branch: tkn_v1beta1
   path: git
   type: git
-  service: ${githubconsolidated02}
+  service: ${tekton-catalog-repo}
 - branch: tkn_v1beta1
   path: git/sample
   type: git
-  service: ${githubconsolidated02}
+  service: ${tekton-catalog-repo}
 properties:
 - name: apikey
   type: secure

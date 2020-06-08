@@ -3,8 +3,8 @@ template:
   name: Build your own toolchain
   description: dynamic-template-prototype
   required:
-    - githubconsolidated01
-    - githubconsolidated02
+    - repo
+    - tekton-catalog-repo
   $configuration:
     ENABLE_EXTENSIONS: true
     ENABLE_IF_ELSE: true
@@ -34,8 +34,8 @@ services:
             } else {
               'github-commit';
             }
-          githubconsolidated02: githubconsolidated02
-          repository_url: "{{services.githubconsolidated01.parameters.repo_url}}"
+          tekton-catalog-repo: tekton-catalog-repo
+          repository_url: "{{services.repo.parameters.repo_url}}"
           repository_url_if: >
             if ( $env.source_provider === 'githubconsolidated' ) {
               "https://github.com/{{services.repo.parameters.owner_id}}/{{services.repo.parameters.repo_name}}";
@@ -53,10 +53,10 @@ services:
         content:
           $text: pipeline_pipeline00.yml
       services:
-        - githubconsolidated01
-        - githubconsolidated02
+        - repo
+        - tekton-catalog-repo
     service_id: pipeline
-  githubconsolidated01:
+  repo:
     parameters:
       type: link
       repo_url: https://github.com/open-toolchain/hello-containers.git
@@ -64,7 +64,7 @@ services:
       enable_traceability: false
     service_id: >
       $env.source_provider ? $env.source_provider : 'githubconsolidated'
-  githubconsolidated02:
+  tekton-catalog-repo:
     parameters:
       type: link
       repo_url: https://github.com/open-toolchain/tekton-catalog.git
