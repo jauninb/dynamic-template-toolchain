@@ -6,8 +6,8 @@ template:
     - githubconsolidated01
     - githubconsolidated02
   $configuration:
-    ENABLE_EXTENSIONS: "true"
-    ENABLE_IF_ELSE: "true"
+    ENABLE_EXTENSIONS: true
+    ENABLE_IF_ELSE: true
 toolchain:
   name: "a-dynamic-templated-toolchain-{{timestamp}}"
 services:
@@ -19,6 +19,9 @@ services:
       ui_pipeline: false
       configuration:
         env:
+          GIT_COMMIT_EVENT_LISTENER_NAME: >
+            $env.source_provider === 'githubconsolidated' ? 'github-commit' :
+              $env.source_provider === 'gitlab' ? 'grit-or-gitlab-commit' : 'grit-or-gitlab-commit'
           githubconsolidated02: githubconsolidated02
           repository_url: "{{services.githubconsolidated01.parameters.repo_url}}"
           repository_url_if: >
