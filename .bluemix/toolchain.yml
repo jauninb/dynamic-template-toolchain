@@ -38,17 +38,17 @@ services:
           repository_url: "{{services.githubconsolidated01.parameters.repo_url}}"
           repository_url_if: >
             if ( $env.source_provider === 'githubconsolidated' ) {
-              "https://github.com/{{form.repo.parameters.owner_id}}/{{form.repo.parameters.repo_name}}";
+              "https://github.com/{{services.repo.parameters.owner_id}}/{{services.repo.parameters.repo_name}}";
             } else if ( $env.source_provider === 'hostedgit' ) {
-              "https://us-south.git.cloud.ibm.com/{{form.repo.parameters.owner_id}}/{{form.repo.parameters.repo_name}}"
+              "https://us-south.git.cloud.ibm.com/{{services.repo.parameters.owner_id}}/{{services.repo.parameters.repo_name}}"
             } else if ( $env.source_provider === 'gitlab' ) {
-              "https://gitlab.com/{{form.repo.parameters.owner_id}}/{{form.repo.parameters.repo_name}}";
+              "https://gitlab.com/{{services.repo.parameters.owner_id}}/{{services.repo.parameters.repo_name}}";
             } else if ( $env.source_provider === 'bitbucketgit' ) {
-              "https://bitbucket.org/{{form.repo.parameters.owner_id}}/{{form.repo.parameters.repo_name}}";
+              "https://bitbucket.org/{{services.repo.parameters.owner_id}}/{{services.repo.parameters.repo_name}}";
             } else if ( $env.source_provider === 'github_integrated' ) {
-              "https://github.ibm.com/{{form.repo.parameters.owner_id}}/{{form.repo.parameters.repo_name}}";
+              "https://github.ibm.com/{{services.repo.parameters.owner_id}}/{{services.repo.parameters.repo_name}}";
             } else {
-              "https://github.com/{{form.repo.parameters.owner_id}}/{{form.repo.parameters.repo_name}}";
+              "https://github.com/{{services.repo.parameters.owner_id}}/{{services.repo.parameters.repo_name}}";
             }
         content:
           $text: pipeline_pipeline00.yml
