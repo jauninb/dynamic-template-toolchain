@@ -34,6 +34,7 @@ services:
             } else {
               'github-commit';
             }
+          owner_id: "{{services.repo.parameters.owner_id}}"
           tekton-catalog-repo: tekton-catalog-repo
           repository_name: "{{services.repo.parameters.repo_name}}"
           repository_url: "{{services.repo.parameters.repo_url}}"
