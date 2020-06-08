@@ -22,8 +22,6 @@ services:
           GIT_COMMIT_EVENT_LISTENER_NAME: >
             if ( $env.source_provider === 'githubconsolidated' ) {
               'github-commit';
-            } else if ( $env.source_provider === 'gitlab' ? ) {
-              "grit-or-gitlab-commit";
             } else {
               'grit-or-gitlab-commit';
             } 
