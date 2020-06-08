@@ -11,12 +11,18 @@ properties:
 - name: apikey
   type: secure
   value: ""
-- name: repository
+- name: repository_url
   type: text
   value: ${repository_url}
 - name: repository_if
   type: text
   value: ${repository_url_if}
+- name: repository_name
+  type: text
+  value: ${repository_name}
+- name: repository_url_mustache
+  type: text
+  value: ${repository_url_mustache}
 triggers:
 - eventListener: event-listener-simple-clone
   name: manual-git-sample
