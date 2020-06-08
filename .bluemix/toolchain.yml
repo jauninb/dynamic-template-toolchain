@@ -8,6 +8,7 @@ template:
   $configuration:
     ENABLE_EXTENSIONS: true
     ENABLE_IF_ELSE: true
+    EXPRESSION_MAXLENGTH: 1000
 toolchain:
   name: "a-dynamic-templated-toolchain-{{timestamp}}"
 services:
