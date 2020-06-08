@@ -37,22 +37,18 @@ services:
           githubconsolidated02: githubconsolidated02
           repository_url: "{{services.githubconsolidated01.parameters.repo_url}}"
           repository_url_if: >
-            if ( $env.services.githubconsolidated01.parameters.type === "link" ) {
-              $env.services.githubconsolidated01.parameters.repo_url;
+            if ( $env.source_provider === 'githubconsolidated' ) {
+              "https://github.com/{{form.repo.parameters.owner_id}}/{{form.repo.parameters.repo_name}}";
+            } else if ( $env.source_provider === 'hostedgit' ) {
+              "https://us-south.git.cloud.ibm.com/{{form.repo.parameters.owner_id}}/{{form.repo.parameters.repo_name}}"
+            } else if ( $env.source_provider === 'gitlab' ) {
+              "https://gitlab.com/{{form.repo.parameters.owner_id}}/{{form.repo.parameters.repo_name}}";
+            } else if ( $env.source_provider === 'bitbucketgit' ) {
+              "https://bitbucket.org/{{form.repo.parameters.owner_id}}/{{form.repo.parameters.repo_name}}";
+            } else if ( $env.source_provider === 'github_integrated' ) {
+              "https://github.ibm.com/{{form.repo.parameters.owner_id}}/{{form.repo.parameters.repo_name}}";
             } else {
-              if ( $env.services.githubconsolidated01.parameters.type === "new" ) {
-                "new";
-              } else {
-                if ( $env.services.githubconsolidated01.parameters.type === "fork" ) {
-                  "fork";
-                } else {
-                  if ( $env.services.githubconsolidated01.parameters.type === "clone" ) {
-                    "clone";
-                  } else {
-                    "(default)https://github.com/open-toolchain/hello-containers.git";
-                  }
-                }
-              }
+              "https://github.com/{{form.repo.parameters.owner_id}}/{{form.repo.parameters.repo_name}}";
             }
         content:
           $text: pipeline_pipeline00.yml
