@@ -1,9 +1,9 @@
 inputs:
-- branch: tkn_v1beta1
+- branch: master
   path: git
   type: git
   service: ${tekton-catalog-repo}
-- branch: tkn_v1beta1
+- branch: master
   path: git/sample
   type: git
   service: ${tekton-catalog-repo}
