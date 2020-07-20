@@ -30,7 +30,7 @@ triggers:
   type: manual
 - type: generic
   secret:
-    value: ''
+    value: 'abcdef'
     type: tokenMatches
     source: header
     keyName: the-header-key-name
