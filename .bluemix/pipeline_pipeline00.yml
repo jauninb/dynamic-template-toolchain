@@ -28,3 +28,18 @@ triggers:
   name: manual-git-sample
   properties: []
   type: manual
+- type: generic
+  secret:
+    value: ''
+    type: tokenMatches
+    source: header
+    keyName: the-header-key-name
+  name: generic-webhook-trigger
+  eventListener: event-listener-simple-clone
+  properties:
+    - type: text
+      name: generic-webhook-trigger-property1
+      value: value1
+    - type: text
+      name: generic-webhook-trigger-property2
+      value: value2
